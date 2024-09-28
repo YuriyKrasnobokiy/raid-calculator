@@ -24,7 +24,8 @@ function calculateRAID() {
   // Create an array of all disks
   const diskSizes = Object.entries(diskCounts)
     .flatMap(([size, count]) => Array(count).fill(parseInt(size)))
-    .filter((size) => size > 0); // Only include disks that have a count
+    .filter((size) => size > 0);
+  // Only include disks that have a count
 
   const diskCount = diskSizes.length;
   const totalSize = diskSizes.reduce((acc, size) => acc + size, 0); // Total capacity
@@ -34,7 +35,7 @@ function calculateRAID() {
   let unusedSpace = 0;
 
   if (diskCount < 1) {
-    alert("Please select at least one disk!");
+    showToast("Please select at least one disk!");
     return;
   }
 
@@ -42,14 +43,15 @@ function calculateRAID() {
   switch (raidType) {
     case RAID_TYPES.RAID_0:
       availableSize = totalSize;
-      systemReserved = 0; // RAID 0 doesn't reserve space
+      // RAID 0 doesn't reserve space
+      systemReserved = 0;
       break;
     case RAID_TYPES.RAID_1:
       if (diskCount >= 2) {
         availableSize = Math.min(...diskSizes);
-        systemReserved = totalSize - availableSize; // Reserved = total - available
+        systemReserved = totalSize - availableSize;
       } else {
-        alert("RAID 1 requires at least 2 disks.");
+        showToast("RAID 1 requires at least 2 disks.");
         return;
       }
       break;
@@ -58,7 +60,7 @@ function calculateRAID() {
         availableSize = (diskCount - 1) * Math.min(...diskSizes);
         dataProtection = Math.min(...diskSizes);
       } else {
-        alert("RAID 2 requires at least 3 disks.");
+        showToast("RAID 2 requires at least 3 disks.");
         return;
       }
       break;
@@ -67,7 +69,7 @@ function calculateRAID() {
         availableSize = (diskCount - 1) * Math.min(...diskSizes);
         dataProtection = Math.min(...diskSizes);
       } else {
-        alert("RAID 3 requires at least 3 disks.");
+        showToast("RAID 3 requires at least 3 disks.");
         return;
       }
       break;
@@ -76,7 +78,7 @@ function calculateRAID() {
         availableSize = (diskCount - 1) * Math.min(...diskSizes);
         dataProtection = Math.min(...diskSizes);
       } else {
-        alert("RAID 5 requires at least 3 disks.");
+        showToast("RAID 5 requires at least 3 disks.");
         return;
       }
       break;
@@ -85,7 +87,7 @@ function calculateRAID() {
         availableSize = (diskCount - 2) * Math.min(...diskSizes);
         dataProtection = 2 * Math.min(...diskSizes);
       } else {
-        alert("RAID 6 requires at least 4 disks.");
+        showToast("RAID 6 requires at least 4 disks.");
         return;
       }
       break;
@@ -94,12 +96,12 @@ function calculateRAID() {
         availableSize = totalSize / 2;
         systemReserved = totalSize / 2;
       } else {
-        alert("RAID 10 requires an even number of disks (minimum 4).");
+        showToast("RAID 10 requires an even number of disks (minimum 4).");
         return;
       }
       break;
     default:
-      alert("Invalid RAID type selected.");
+      showToast("Invalid RAID type selected.");
       return;
   }
 
@@ -122,4 +124,16 @@ function updateDiskCount(diskId, increment) {
   let currentValue = parseInt(diskCountDisplay.innerText);
   currentValue = increment ? currentValue + 1 : Math.max(0, currentValue - 1);
   diskCountDisplay.innerText = currentValue;
+}
+
+function showToast(message) {
+  const toastBody = document.querySelector(".toast-body");
+  toastBody.textContent = message;
+
+  const toastEl = document.getElementById("toast");
+  const toast = new bootstrap.Toast(toastEl, {
+    autohide: true,
+    delay: 5000,
+  });
+  toast.show();
 }

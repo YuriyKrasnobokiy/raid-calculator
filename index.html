@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RAID Калькулятор</title>
+    <title>RAID Calculator</title>
     <link rel="icon" href="favicon.png" type="image/x-icon" />
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
@@ -18,7 +18,7 @@
     <div class="container my-5">
       <h1 class="text-center">RAID Калькулятор</h1>
 
-      <!-- Вибір типу RAID -->
+      <!-- RAID menu-->
       <div class="form-group">
         <label for="raidType">Тип RAID:</label>
         <select id="raidType" class="form-control">
@@ -32,7 +32,7 @@
         </select>
       </div>
 
-      <!-- Вибір кількості дисків певних ємностей -->
+      <!-- Disk select -->
       <h5>Виберіть кількість дисків для кожної ємності:</h5>
       <div class="disk-type-wrap form-group">
         <label>1 ТБ:</label>
@@ -148,19 +148,51 @@
         </div>
       </div>
 
-      <!-- Кнопка для розрахунку -->
+      <!-- Calculate button -->
       <button class="btn btn-primary btn-calc" onclick="calculateRAID()">
         Розрахувати
       </button>
 
-      <!-- Відображення результату -->
-      <h2 class="mt-4">Результати:</h2>
-      <div class="results">
-        <p>Загальна ємність: <span id="totalCapacity">0</span> ТБ</p>
-        <p>Зарезервовано для системи: <span id="systemReserved">0</span> ТБ</p>
-        <p>Захист даних: <span id="dataProtection">0</span> ТБ</p>
-        <p>Доступна ємність: <span id="availableCapacity">0</span> ТБ</p>
-        <p>Не використовується обсяг: <span id="unusedCapacity">0</span> ТБ</p>
+      <!-- Results -->
+      <div>
+        <h2 class="mt-4">Результати:</h2>
+        <div class="results">
+          <p>Загальна ємність: <span id="totalCapacity">0</span> ТБ</p>
+          <p>
+            Зарезервовано для системи: <span id="systemReserved">0</span> ТБ
+          </p>
+          <p>Захист даних: <span id="dataProtection">0</span> ТБ</p>
+          <p>Доступна ємність: <span id="availableCapacity">0</span> ТБ</p>
+          <p>
+            Не використовується обсяг: <span id="unusedCapacity">0</span> ТБ
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="toastContainer"
+      aria-live="polite"
+      aria-atomic="true"
+      style="position: absolute; top: 20px; right: 200px"
+    >
+      <div
+        class="toast"
+        id="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <strong class="me-auto">Error</strong>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">message</div>
       </div>
     </div>
     <script src="index.js"></script>
