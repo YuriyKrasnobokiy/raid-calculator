@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RAID Калькулятор</title>
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container my-5">
+      <h1 class="text-center">RAID Калькулятор</h1>
+
+      <!-- Вибір типу RAID -->
+      <div class="form-group">
+        <label for="raidType">Тип RAID:</label>
+        <select id="raidType" class="form-control">
+          <option value="0">RAID 0</option>
+          <option value="1">RAID 1</option>
+          <option value="2">RAID 2</option>
+          <option value="3">RAID 3</option>
+          <option value="5">RAID 5</option>
+          <option value="6">RAID 6</option>
+          <option value="10">RAID 10</option>
+        </select>
+      </div>
+
+      <!-- Вибір кількості дисків певних ємностей -->
+      <h5>Виберіть кількість дисків для кожної ємності:</h5>
+      <div class="disk-type-wrap form-group">
+        <label>1 ТБ:</label>
+        <div class="disk-quantity input-group">
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk1TB', false)"
+          >
+            -
+          </button>
+          <span id="disk1TB" class="form-control text-center">0</span>
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk1TB', true)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="disk-type-wrap form-group">
+        <label>2 ТБ:</label>
+        <div class="disk-quantity input-group">
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk2TB', false)"
+          >
+            -
+          </button>
+          <span id="disk2TB" class="form-control text-center">0</span>
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk2TB', true)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="disk-type-wrap form-group">
+        <label>4 ТБ:</label>
+        <div class="disk-quantity input-group">
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk4TB', false)"
+          >
+            -
+          </button>
+          <span id="disk4TB" class="form-control text-center">0</span>
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk4TB', true)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="disk-type-wrap form-group">
+        <label>6 ТБ:</label>
+        <div class="disk-quantity input-group">
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk6TB', false)"
+          >
+            -
+          </button>
+          <span id="disk6TB" class="form-control text-center">0</span>
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk6TB', true)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="disk-type-wrap form-group">
+        <label>8 ТБ:</label>
+        <div class="disk-quantity input-group">
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk8TB', false)"
+          >
+            -
+          </button>
+          <span id="disk8TB" class="form-control text-center">0</span>
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk8TB', true)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <div class="disk-type-wrap form-group">
+        <label>10 ТБ:</label>
+        <div class="disk-quantity input-group">
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk10TB', false)"
+          >
+            -
+          </button>
+          <span id="disk10TB" class="form-control text-center">0</span>
+          <button
+            class="btn btn-secondary"
+            onclick="updateDiskCount('disk10TB', true)"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
+      <!-- Кнопка для розрахунку -->
+      <button class="btn btn-primary btn-calc" onclick="calculateRAID()">
+        Розрахувати
+      </button>
+
+      <!-- Відображення результату -->
+      <h2 class="mt-4">Результати:</h2>
+      <div class="results">
+        <p>Загальна ємність: <span id="totalCapacity">0</span> ТБ</p>
+        <p>Зарезервовано для системи: <span id="systemReserved">0</span> ТБ</p>
+        <p>Захист даних: <span id="dataProtection">0</span> ТБ</p>
+        <p>Доступна ємність: <span id="availableCapacity">0</span> ТБ</p>
+        <p>Не використовується обсяг: <span id="unusedCapacity">0</span> ТБ</p>
+      </div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
