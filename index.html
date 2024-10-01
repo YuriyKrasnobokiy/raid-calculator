@@ -16,7 +16,11 @@
   </head>
   <body>
     <div class="container my-5">
-      <h1 class="text-center">RAID Калькулятор</h1>
+      <h1 class="text-center title">RAID Калькулятор</h1>
+
+      <!-- Disk select -->
+      <h5>Виберіть кількість дисків для кожної ємності:</h5>
+      <div id="diskList"></div>
 
       <!-- RAID menu-->
       <div class="form-group">
@@ -30,122 +34,6 @@
           <option value="6">RAID 6</option>
           <option value="10">RAID 10</option>
         </select>
-      </div>
-
-      <!-- Disk select -->
-      <h5>Виберіть кількість дисків для кожної ємності:</h5>
-      <div class="disk-type-wrap form-group">
-        <label>1 ТБ:</label>
-        <div class="disk-quantity input-group">
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk1TB', false)"
-          >
-            -
-          </button>
-          <span id="disk1TB" class="form-control text-center">0</span>
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk1TB', true)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      <div class="disk-type-wrap form-group">
-        <label>2 ТБ:</label>
-        <div class="disk-quantity input-group">
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk2TB', false)"
-          >
-            -
-          </button>
-          <span id="disk2TB" class="form-control text-center">0</span>
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk2TB', true)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      <div class="disk-type-wrap form-group">
-        <label>4 ТБ:</label>
-        <div class="disk-quantity input-group">
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk4TB', false)"
-          >
-            -
-          </button>
-          <span id="disk4TB" class="form-control text-center">0</span>
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk4TB', true)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      <div class="disk-type-wrap form-group">
-        <label>6 ТБ:</label>
-        <div class="disk-quantity input-group">
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk6TB', false)"
-          >
-            -
-          </button>
-          <span id="disk6TB" class="form-control text-center">0</span>
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk6TB', true)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      <div class="disk-type-wrap form-group">
-        <label>8 ТБ:</label>
-        <div class="disk-quantity input-group">
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk8TB', false)"
-          >
-            -
-          </button>
-          <span id="disk8TB" class="form-control text-center">0</span>
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk8TB', true)"
-          >
-            +
-          </button>
-        </div>
-      </div>
-
-      <div class="disk-type-wrap form-group">
-        <label>10 ТБ:</label>
-        <div class="disk-quantity input-group">
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk10TB', false)"
-          >
-            -
-          </button>
-          <span id="disk10TB" class="form-control text-center">0</span>
-          <button
-            class="btn btn-secondary"
-            onclick="updateDiskCount('disk10TB', true)"
-          >
-            +
-          </button>
-        </div>
       </div>
 
       <!-- Calculate button -->
