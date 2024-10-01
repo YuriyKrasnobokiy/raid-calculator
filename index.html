@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="container my-5">
+    <div class="container">
       <h1 class="text-center title">RAID Калькулятор</h1>
 
       <!-- Disk select -->
       <h5>Виберіть кількість дисків для кожної ємності:</h5>
-      <div id="diskList"></div>
+      <div id="diskList" class="container my-5"></div>
 
       <!-- RAID menu-->
       <div class="form-group">
@@ -35,11 +35,17 @@
           <option value="10">RAID 10</option>
         </select>
       </div>
+      <div class="btns-wrap">
+        <!-- Reset button -->
+        <button class="btn btn-secondary btn-reset" onclick="resetAll()">
+          Скинути
+        </button>
 
-      <!-- Calculate button -->
-      <button class="btn btn-primary btn-calc" onclick="calculateRAID()">
-        Розрахувати
-      </button>
+        <!-- Calculate button -->
+        <button class="btn btn-primary btn-calc" onclick="calculateRAID()">
+          Розрахувати
+        </button>
+      </div>
 
       <!-- Results -->
       <div>

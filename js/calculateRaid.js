@@ -123,3 +123,23 @@ function calculateRAID() {
   document.getElementById("unusedCapacity").textContent =
     unusedSpace.toFixed(2);
 }
+
+function resetAll() {
+  document.getElementById("raidType").value = 0;
+  document.getElementById("disk1TB").innerText = 0;
+  document.getElementById("disk2TB").innerText = 0;
+  document.getElementById("disk4TB").innerText = 0;
+  document.getElementById("disk6TB").innerText = 0;
+  document.getElementById("disk8TB").innerText = 0;
+  document.getElementById("disk10TB").innerText = 0;
+  document.getElementById("disk12TB").innerText = 0;
+  document.getElementById("disk14TB").innerText = 0;
+  document.getElementById("disk16TB").innerText = 0;
+  document.getElementById("disk18TB").innerText = 0;
+  document.getElementById("disk20TB").innerText = 0;
+  document.getElementById("totalCapacity").textContent = "0";
+  document.getElementById("systemReserved").textContent = "0";
+  document.getElementById("dataProtection").textContent = "0";
+  document.getElementById("availableCapacity").textContent = "0";
+  document.getElementById("unusedCapacity").textContent = "0";
+}

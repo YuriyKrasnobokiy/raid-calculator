@@ -15,9 +15,12 @@ ul {
 }
 
 button {
-  cursor: pointer;
-  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   outline: none;
+  border: none;
+  cursor: pointer;
 }
 
 .title {
@@ -26,6 +29,12 @@ button {
 
 .list {
   list-style: none;
+}
+
+#diskList {
+  height: 30dvh;
+  overflow-y: scroll;
+  padding: 10px;
 }
 
 .disk-type-wrap {
@@ -39,12 +48,17 @@ button {
   width: 50%;
 }
 
-.btn-calc {
+.btn-calc,
+.btn-reset {
+  width: 50%;
+}
+
+.btns-wrap {
   display: flex;
   width: 100%;
-  justify-content: center;
-  align-items: center;
+  gap: 10px;
 }
+
 input[type="number"] {
   width: 60px;
   text-align: center;
