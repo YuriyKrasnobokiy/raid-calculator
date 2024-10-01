@@ -14,7 +14,6 @@ Supports multiple RAID levels:
 - RAID 3
 - RAID 5
 - RAID 6
-- RAID 7
 - RAID 10
 
 ### Dynamic Disk Selection
@@ -23,7 +22,7 @@ Users can select the number of disks for each capacity (1TB, 2TB, 4TB, etc.) and
 
 ### Disk Size Options
 
-Users can choose disk capacities from 1TB to 10TB for each disk slot.
+Users can choose disk capacities from 1TB to 20TB for each disk slot.
 
 ### Real-time Calculation
 
